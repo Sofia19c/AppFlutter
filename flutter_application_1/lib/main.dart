@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 // Un paquete que facilita la gestión del estado en Flutter.
 import 'package:provider/provider.dart';
 
+import 'package:flutter_application_1/pages/generatorPage.dart';
+import 'package:flutter_application_1/pages/favoritesPage.dart';
+
 void main() { //Ejecuta el widget raíz, "My App"
   runApp(MyApp());
 }
@@ -86,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: NavigationRail(
                 extended: constraints.maxWidth >= 600,  // ← Here.
                 destinations: [
+                  //Menu
                   NavigationRailDestination(
                     icon: Icon(Icons.home),
                     label: Text('Home'),
@@ -116,55 +120,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-//GeneratorPage muestra el par de palabras actual y
-//permite marcarlo como favorito o generar uno nuevo.
-class GeneratorPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-    var pair = appState.current;
-
-    IconData icon;
-    if (appState.favorites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          //BigCard: widget personalizado que muestra el par de palabras 
-          //en un formato grande.
-          BigCard(pair: pair),
-          SizedBox(height: 10),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton.icon(
-                onPressed: () {
-                  appState.toggleFavorite();
-                },
-                icon: Icon(icon),
-                label: Text('Like'),
-              ),
-              SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () {
-                  appState.getNext();
-                },
-                child: Text('Next'),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
- 
-
  //es un widget que muestra un par de palabras en 
  //una tarjeta grande con un estilo específico.
 class BigCard extends StatelessWidget {
@@ -192,36 +147,6 @@ class BigCard extends StatelessWidget {
           semanticsLabel: "${pair.first} ${pair.second}",
         ),
       ),
-    );
-  }
-}
-
-//FavoritesPage muestra una lista de los pares de palabras favoritos. 
-//Si no hay favoritos, muestra un mensaje indicándolo.
-class FavoritesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
-
-    if (appState.favorites.isEmpty) {
-      return Center(
-        child: Text('No favorites yet.'),
-      );
-    }
-
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
-        ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
-          ),
-      ],
     );
   }
 }
