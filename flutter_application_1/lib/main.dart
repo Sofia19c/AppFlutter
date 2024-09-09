@@ -103,37 +103,49 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           body: LayoutBuilder(
             builder: (context, constraints) {
-              return Row(
+              return Column(
                 children: [
-                  if (isRailVisible)
-                    SafeArea(
-                      child: NavigationRail(
-                        extended: constraints.maxWidth >= 600,
-                        destinations: [
-                          NavigationRailDestination(
-                            icon: Icon(Icons.home),
-                            label: Text('Home'),
-                          ),
-                          NavigationRailDestination(
-                            icon: Icon(Icons.favorite),
-                            label: Text('Favorites'),
-                          ),
-                        ],
-                        selectedIndex: selectedIndex,
-                        onDestinationSelected: (value) {
-                          setState(() {
-                            selectedIndex = value;
-                          });
-                        },
-                      ),
+                    Image.asset(
+                      'assets/images/logo_Bellisimas.png',
+                      width: double.infinity,
+                      height: 200,
+                      fit: BoxFit.cover,
                     ),
-                  Expanded(
-                    child: Container(
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      child: page,
-                    ),
-                  ),
-                ],
+                    Expanded (
+                    child : Row(
+                      children: [
+                        if (isRailVisible)
+                          SafeArea(
+                            child: NavigationRail(
+                              extended: constraints.maxWidth >= 600,
+                              destinations: [
+                                NavigationRailDestination(
+                                  icon: Icon(Icons.home),
+                                  label: Text('Home'),
+                                ),
+                                NavigationRailDestination(
+                                  icon: Icon(Icons.favorite),
+                                  label: Text('Favorites'),
+                                ),
+                              ],
+                              selectedIndex: selectedIndex,
+                              onDestinationSelected: (value) {
+                                setState(() {
+                                  selectedIndex = value;
+                                });
+                              },
+                            ),
+                          ),
+                        Expanded(
+                          child: Container(
+                            color: Theme.of(context).colorScheme.primaryContainer,
+                            child: page,
+                          ),
+                        ),
+                      ],
+                    )
+                  ) 
+                ] 
               );
             },
           ),
