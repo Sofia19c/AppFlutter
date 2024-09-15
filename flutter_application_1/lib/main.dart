@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 243, 190, 232)),
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 252, 252, 252)),
         ),
         home: MyHomePage(),
       ),
@@ -101,53 +101,58 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          body: LayoutBuilder(
-            builder: (context, constraints) {
-              return Column(
-                children: [
-                    Image.asset(
-                      'assets/images/logo_Bellisimas.png',
-                      width: double.infinity,
-                      height: 200,
-                      fit: BoxFit.cover,
-                    ),
-                    Expanded (
-                    child : Row(
-                      children: [
-                        if (isRailVisible)
-                          SafeArea(
-                            child: NavigationRail(
-                              extended: constraints.maxWidth >= 600,
-                              destinations: [
-                                NavigationRailDestination(
-                                  icon: Icon(Icons.home),
-                                  label: Text('Home'),
-                                ),
-                                NavigationRailDestination(
-                                  icon: Icon(Icons.favorite),
-                                  label: Text('Favorites'),
-                                ),
-                              ],
-                              selectedIndex: selectedIndex,
-                              onDestinationSelected: (value) {
-                                setState(() {
-                                  selectedIndex = value;
-                                });
-                              },
+          body: Container(
+            color: Colors.white, // Fondo blanco
+            child: Column(
+              children: [
+                // Imagen ajustada
+                SizedBox(
+                  height: 200, // Ajusta la altura de la imagen según prefieras
+                  child: Image.asset(
+                    'assets/images/logo_Bellisimas.png',
+                    fit: BoxFit.contain, // Ajuste para que no distorsione la imagen
+                  ),
+                ),
+                Expanded(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return Row(
+                        children: [
+                          if (isRailVisible)
+                            SafeArea(
+                              child: NavigationRail(
+                                extended: constraints.maxWidth >= 600,
+                                destinations: [
+                                  NavigationRailDestination(
+                                    icon: Icon(Icons.home),
+                                    label: Text('Home'),
+                                  ),
+                                  NavigationRailDestination(
+                                    icon: Icon(Icons.favorite),
+                                    label: Text('Favorites'),
+                                  ),
+                                ],
+                                selectedIndex: selectedIndex,
+                                onDestinationSelected: (value) {
+                                  setState(() {
+                                    selectedIndex = value;
+                                  });
+                                },
+                              ),
+                            ),
+                          Expanded(
+                            child: Container(
+                              color: Theme.of(context).colorScheme.primaryContainer,
+                              child: page,
                             ),
                           ),
-                        Expanded(
-                          child: Container(
-                            color: Theme.of(context).colorScheme.primaryContainer,
-                            child: page,
-                          ),
-                        ),
-                      ],
-                    )
-                  ) 
-                ] 
-              );
-            },
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
