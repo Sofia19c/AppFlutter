@@ -1,34 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_application_1/main.dart';
 
-
-//FavoritesPage muestra una lista de los pares de palabras favoritos. 
-//Si no hay favoritos, muestra un mensaje indicándolo.
 class FavoritesPage extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
-    var appState = context.watch<MyAppState>();
+  Widget build(BuildContext context) {
+    // Aquí puedes añadir lógica específica si tienes algún contenido personalizado para mostrar.
+    // Actualmente, solo muestra una página vacía con un mensaje básico.
 
-    if (appState.favorites.isEmpty) {
-      return Center(
-        child: Text('No favorites yet.'),
-      );
-    }
-
-    return ListView(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(20),
-          child: Text('You have '
-              '${appState.favorites.length} favorites:'),
-        ),
-        for (var pair in appState.favorites)
-          ListTile(
-            leading: Icon(Icons.favorite),
-            title: Text(pair.asLowerCase),
-          ),
-      ],
+    return Center(
+      child: Text('Aún no hay contenido en la página de favoritos.'),
     );
   }
 }

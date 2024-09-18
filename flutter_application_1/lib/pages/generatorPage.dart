@@ -2,46 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/main.dart';
 
-
-//GeneratorPage muestra el par de palabras actual y
-//permite marcarlo como favorito o generar uno nuevo.
+// GeneratorPage muestra el contenido de la página principal.
 class GeneratorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
-    var pair = appState.current;
-
-    IconData icon;
-    if (appState.favorites.contains(pair)) {
-      icon = Icons.favorite;
-    } else {
-      icon = Icons.favorite_border;
-    }
 
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          //BigCard: widget personalizado que muestra el par de palabras 
-          //en un formato grande.
-          BigCard(pair: pair),
+          // Aquí puedes agregar cualquier contenido que quieras en vez de las palabras aleatorias.
+          Text(
+            'Bienvenido a la página principal', 
+            style: TextStyle(fontSize: 24),
+          ),
           SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               ElevatedButton.icon(
                 onPressed: () {
-                  appState.toggleFavorite();
+                  // Aquí puedes añadir lógica adicional si es necesario.
                 },
-                icon: Icon(icon),
-                label: Text('Like'),
+                icon: Icon(Icons.favorite_border),
+                label: Text('Acción'),
               ),
               SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () {
-                  appState.getNext();
+                  // Aquí puedes añadir otra acción o lógica según lo que desees.
                 },
-                child: Text('Next'),
+                child: Text('Otra acción'),
               ),
             ],
           ),

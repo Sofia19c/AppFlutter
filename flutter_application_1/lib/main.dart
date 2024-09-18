@@ -1,5 +1,3 @@
-// Paquete que permite generar pares de palabras en inglés.
-import 'package:english_words/english_words.dart';
 // El paquete principal para construir aplicaciones con Flutter.
 import 'package:flutter/material.dart';
 // Un paquete que facilita la gestión del estado en Flutter.
@@ -8,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
 
-void main() { // Ejecuta el widget raíz, "MyApp".
+void main() { 
   runApp(MyApp());
 }
 
@@ -34,28 +32,9 @@ class MyApp extends StatelessWidget {
 }
 
 // Esta clase gestiona el estado de la aplicación.
+// Puedes añadir nueva lógica aquí si es necesario para gestionar el estado de la app.
 class MyAppState extends ChangeNotifier {
-  // Generador de palabras aleatorias.
-  var current = WordPair.random();
-
-  // Cambia a un nuevo par de palabras y notifica a los oyentes.
-  void getNext() {
-    current = WordPair.random();
-    notifyListeners();
-  }
-  
-  // Lista de palabras favoritas.
-  var favorites = <WordPair>[];
-
-  // Añade o elimina el par actual de la lista de favoritos.
-  void toggleFavorite() {
-    if (favorites.contains(current)) {
-      favorites.remove(current);
-    } else {
-      favorites.add(current);
-    }
-    notifyListeners();
-  }
+  // Aquí puedes agregar otras variables o funcionalidades que quieras para la app.
 }
 
 // El widget StatefulWidget se utiliza para manejar la interfaz que cambia de estado.
@@ -74,10 +53,10 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorPage();
+        page = GeneratorPage(); // Página referenciada
         break;
       case 1:
-        page = FavoritesPage();
+        page = FavoritesPage(); // Página referenciada
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -156,36 +135,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         );
       },
-    ); // Aquí cierra el LayoutBuilder externo.
-  } // Aquí cierra el método build.
-} // Aquí cierra la clase _MyHomePageState.
-
-// Es un widget que muestra un par de palabras en una tarjeta grande con un estilo específico.
-class BigCard extends StatelessWidget {
-  const BigCard({
-    super.key,
-    required this.pair,
-  });
-
-  final WordPair pair;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final style = theme.textTheme.displayMedium!.copyWith(
-      color: theme.colorScheme.onPrimary,
-    );
-
-    return Card(
-      color: theme.colorScheme.primary,
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Text(
-          pair.asLowerCase, 
-          style: style,
-          semanticsLabel: "${pair.first} ${pair.second}",
-        ),
-      ),
-    );
+    ); 
   }
 }
