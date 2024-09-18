@@ -31,8 +31,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Esta clase gestiona el estado de la aplicación.
-// Puedes añadir nueva lógica aquí si es necesario para gestionar el estado de la app.
+// Clase MyAppState para gestionar el estado de la app.
 class MyAppState extends ChangeNotifier {
   // Aquí puedes agregar otras variables o funcionalidades que quieras para la app.
 }
@@ -100,6 +99,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           if (isRailVisible)
                             SafeArea(
                               child: NavigationRail(
+                                backgroundColor: Colors.pink[100], // Fondo rosado del menú
+                                selectedIconTheme: IconThemeData(
+                                  color: Colors.pink, // Color de íconos seleccionados
+                                ),
+                                unselectedIconTheme: IconThemeData(
+                                  color: Colors.pink[300], // Color de íconos no seleccionados
+                                ),
                                 extended: constraints.maxWidth >= 600,
                                 destinations: [
                                   NavigationRailDestination(
@@ -135,6 +141,6 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         );
       },
-    ); 
+    );
   }
 }
