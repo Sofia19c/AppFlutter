@@ -79,65 +79,63 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ],
           ),
-          body: Container(
-            color: Colors.white, // Fondo blanco
-            child: Column(
-              children: [
-                // Imagen ajustada
-                SizedBox(
-                  height: 200, // Ajusta la altura de la imagen según prefieras
-                  child: Image.asset(
-                    'assets/images/logo_Bellisimas.png',
-                    fit: BoxFit.contain, // Ajuste para que no distorsione la imagen
-                  ),
-                ),
-                Expanded(
-                  child: LayoutBuilder(
-                    builder: (context, constraints) {
-                      return Row(
-                        children: [
-                          if (isRailVisible)
-                            SafeArea(
-                              child: NavigationRail(
-                                backgroundColor: Colors.pink[100], // Fondo rosado del menú
-                                selectedIconTheme: IconThemeData(
-                                  color: Colors.pink, // Color de íconos seleccionados
-                                ),
-                                unselectedIconTheme: IconThemeData(
-                                  color: Colors.pink[300], // Color de íconos no seleccionados
-                                ),
-                                extended: constraints.maxWidth >= 600,
-                                destinations: [
-                                  NavigationRailDestination(
-                                    icon: Icon(Icons.home),
-                                    label: Text('Home'),
-                                  ),
-                                  NavigationRailDestination(
-                                    icon: Icon(Icons.favorite),
-                                    label: Text('Favorites'),
-                                  ),
-                                ],
-                                selectedIndex: selectedIndex,
-                                onDestinationSelected: (value) {
-                                  setState(() {
-                                    selectedIndex = value;
-                                  });
-                                },
-                              ),
-                            ),
-                          Expanded(
-                            child: Container(
-                              color: Theme.of(context).colorScheme.primaryContainer,
-                              child: page,
-                            ),
-                          ),
-                        ],
-                      );
+          body: Row(
+            children: [
+              if (isRailVisible)
+                SafeArea(
+                  child: NavigationRail(
+                    backgroundColor: Colors.pink[100], // Fondo rosado del menú
+                    selectedIconTheme: IconThemeData(
+                      color: Colors.pink, // Color de íconos seleccionados
+                    ),
+                    unselectedIconTheme: IconThemeData(
+                      color: Colors.pink[300], // Color de íconos no seleccionados
+                    ),
+                    extended: constraints.maxWidth >= 600,
+                    destinations: [
+                      NavigationRailDestination(
+                        icon: Icon(Icons.home),
+                        label: Text('Home'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.favorite),
+                        label: Text('Favorites'),
+                      ),
+                    ],
+                    selectedIndex: selectedIndex,
+                    onDestinationSelected: (value) {
+                      setState(() {
+                        selectedIndex = value;
+                      });
                     },
                   ),
                 ),
-              ],
-            ),
+              Expanded(
+                child: Column(
+                  children: [
+                    // Ajuste de imagen con flexibilidad para que no ocupe tanto espacio
+                    Flexible(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Image.asset(
+                          'assets/images/logo_Bellisimas.png',
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                    ),
+                    // El contenido debajo de la imagen
+                    Expanded(
+                      flex: 2,
+                      child: Container(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        child: page,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         );
       },
