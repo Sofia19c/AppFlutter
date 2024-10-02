@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
 
+//La función main es el punto de entrada de la aplicación. runApp inicia la aplicación, construyendo el widget MyApp
 void main() { 
   runApp(MyApp());
 }
