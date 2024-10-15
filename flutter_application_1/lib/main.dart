@@ -1,23 +1,17 @@
-// El paquete principal para construir aplicaciones con Flutter.
 import 'package:flutter/material.dart';
-// Un paquete que facilita la gestión del estado en Flutter.
 import 'package:provider/provider.dart';
-
 import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
 
-//La función main es el punto de entrada de la aplicación. runApp inicia la aplicación, construyendo el widget MyApp
 void main() { 
   runApp(MyApp());
 }
 
-// Widget MyApp
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Proporciona el estado de la aplicación (MyAppState) a los widgets hijos.
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
@@ -32,12 +26,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Clase MyAppState para gestionar el estado de la app.
-class MyAppState extends ChangeNotifier {
-  // Aquí puedes agregar otras variables o funcionalidades que quieras para la app.
-}
+class MyAppState extends ChangeNotifier {}
 
-// El widget StatefulWidget se utiliza para manejar la interfaz que cambia de estado.
 class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -46,17 +36,17 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
   bool isDrawerOpen = false;
-  bool isRailVisible = true; // Controla si el Drawer está abierto.
+  bool isRailVisible = true;
 
   @override
   Widget build(BuildContext context) {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorPage(); // Página referenciada
+        page = GeneratorPage();
         break;
       case 1:
-        page = FavoritesPage(); // Página referenciada
+        page = FavoritesPage();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -64,9 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        return Scaffold(                                                                                 
+        return Scaffold(                                                                                  
           appBar: AppBar(
-            title: Text('Namer App'),                                                                                                                     
+            title: Text('Namer App'),                                                                                                                      
             actions: [
               Builder(                                      
                 builder: (context) => IconButton(
@@ -85,12 +75,12 @@ class _MyHomePageState extends State<MyHomePage> {
               if (isRailVisible)
                 SafeArea(
                   child: NavigationRail(
-                    backgroundColor: Colors.pink[100], // Fondo rosado del menú
+                    backgroundColor: Colors.pink[100],
                     selectedIconTheme: IconThemeData(
-                      color: Colors.pink, // Color de íconos seleccionados
+                      color: Colors.pink,
                     ),
                     unselectedIconTheme: IconThemeData(
-                      color: Colors.pink[300], // Color de íconos no seleccionados
+                      color: Colors.pink[300],
                     ),
                     extended: constraints.maxWidth >= 600,
                     destinations: [
@@ -114,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                 child: Column(
                   children: [
-                    // Ajuste de imagen con flexibilidad para que no ocupe tanto espacio
+                    // Ajuste de imagen
                     Flexible(
                       flex: 1,
                       child: Padding(
@@ -125,11 +115,38 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
-                    // El contenido debajo de la imagen
+                    // Texto agregado debajo de la imagen
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Bellísimas Nails Academia de uñas online Cursos Virtuales',
+                            style: TextStyle(
+                              color: Colors.pink, // Color rosado
+                              fontWeight: FontWeight.bold, // Negrita
+                              fontSize: 18, // Tamaño de letra
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 8), // Espacio entre las líneas de texto
+                          Text(
+                            'Bellísimas Nails academia de uñas virtual, aprende con nosotros y conviértete en manicurista profesional, estudia con nuestros cursos virtuales y aprende todo sobre el mundo de uñas.',
+                            style: TextStyle(
+                              color: Colors.black, // Color negro
+                              fontWeight: FontWeight.normal, // Sin negrita
+                              fontSize: 16, // Tamaño de letra
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ],
+                      ),
+                    ),
+                    // El contenido debajo del texto y la imagen
                     Expanded(
                       flex: 2,
                       child: Container(
-                        color: Theme.of(context).colorScheme.primaryContainer,
+                        color: Colors.white,
                         child: page,
                       ),
                     ),
