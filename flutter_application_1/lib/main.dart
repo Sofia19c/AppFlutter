@@ -64,11 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        return Scaffold(
+        return Scaffold(                                                                                 
           appBar: AppBar(
-            title: Text('Namer App'),
+            title: Text('Namer App'),                                                                                                                     
             actions: [
-              Builder(
+              Builder(                                      
                 builder: (context) => IconButton(
                   icon: Icon(isRailVisible ? Icons.close : Icons.menu),
                   onPressed: () {
