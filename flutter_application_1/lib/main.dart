@@ -54,8 +54,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        return Scaffold(                                                                                  
+        return Scaffold(
+          backgroundColor: Colors.white,  // Asegura que el fondo del Scaffold sea blanco                                                                                  
           appBar: AppBar(
+            backgroundColor: Colors.white, 
             title: Text('Namer App'),                                                                                                                      
             actions: [
               Builder(                                      
