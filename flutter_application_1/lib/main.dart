@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
-          backgroundColor: Colors.white,  // Asegura que el fondo del Scaffold sea blanco                                                                                  
+          backgroundColor: Colors.white,  // Asegura que el fondo del Scaffold sea blanco                                                                                   
           appBar: AppBar(
             backgroundColor: Colors.white, 
             title: Text('Namer App'),                                                                                                                      
@@ -117,6 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
+                    // Espacio entre la imagen y el texto
+                    SizedBox(height: 40), // Añadir espacio de 20 píxeles entre la imagen y el texto
                     // Texto agregado debajo de la imagen
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 100.50),
