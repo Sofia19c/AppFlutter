@@ -119,7 +119,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     // Texto agregado debajo de la imagen
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 100.50),
+                      //padding: const EdgeInsets.all(16.0), si lo de arriba no funcion
                       child: Column(
                         children: [
                           Text(
