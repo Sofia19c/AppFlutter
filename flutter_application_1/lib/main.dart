@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart'; // Importamos el paquete para reproducir videos de YouTube.
 
-void main() { 
+void main() {
   runApp(MyApp());
 }
 
@@ -38,6 +39,28 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isDrawerOpen = false;
   bool isRailVisible = true;
 
+  // Inicializamos el controlador de YouTube.
+  late YoutubePlayerController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    // Aquí inicializamos el controlador con el ID del video de YouTube.
+    _controller = YoutubePlayerController(
+      initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=2EXsmrD3_RM&t=397s')!,
+      flags: const YoutubePlayerFlags(
+        autoPlay: false,
+        mute: false,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget page;
@@ -55,12 +78,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
-          backgroundColor: Colors.white,  // Asegura que el fondo del Scaffold sea blanco                                                                                   
+          backgroundColor: Colors.white,
           appBar: AppBar(
-            backgroundColor: Colors.white, 
-            title: Text('Namer App'),                                                                                                                      
+            backgroundColor: Colors.white,
+            title: Text('Namer App'),
             actions: [
-              Builder(                                      
+              Builder(
                 builder: (context) => IconButton(
                   icon: Icon(isRailVisible ? Icons.close : Icons.menu),
                   onPressed: () {
@@ -106,7 +129,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                 child: Column(
                   children: [
-                    // Ajuste de imagen
                     Flexible(
                       flex: 1,
                       child: Padding(
@@ -117,37 +139,38 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
-                    // Espacio entre la imagen y el texto
-                    SizedBox(height: 40), // Añadir espacio de 20 píxeles entre la imagen y el texto
-                    // Texto agregado debajo de la imagen
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 100.50),
-                      //padding: const EdgeInsets.all(16.0), si lo de arriba no funcion
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
                         children: [
                           Text(
                             'Bellísimas Nails Academia de uñas online Cursos Virtuales',
                             style: TextStyle(
-                              color: Colors.pink, // Color rosado
-                              fontWeight: FontWeight.bold, // Negrita
-                              fontSize: 18, // Tamaño de letra
+                              color: Colors.pink,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(height: 8), // Espacio entre las líneas de texto
+                          SizedBox(height: 8),
                           Text(
                             'Bellísimas Nails academia de uñas virtual, aprende con nosotros y conviértete en manicurista profesional, estudia con nuestros cursos virtuales y aprende todo sobre el mundo de uñas.',
                             style: TextStyle(
-                              color: Colors.black, // Color negro
-                              fontWeight: FontWeight.normal, // Sin negrita
-                              fontSize: 16, // Tamaño de letra
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal,
+                              fontSize: 16,
                             ),
                             textAlign: TextAlign.center,
                           ),
                         ],
                       ),
                     ),
-                    // El contenido debajo del texto y la imagen
+                    SizedBox(height: 20),
+                    // Añadimos el video aquí.
+                    YoutubePlayer(
+                      controller: _controller,
+                      showVideoProgressIndicator: true,
+                    ),
                     Expanded(
                       flex: 2,
                       child: Container(

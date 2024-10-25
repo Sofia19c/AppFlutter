@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.0.0
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:
