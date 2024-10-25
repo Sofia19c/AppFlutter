@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Column(
                         children: [
                           Text(
@@ -166,10 +166,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    // Añadimos el video aquí.
-                    YoutubePlayer(
-                      controller: _controller,
-                      showVideoProgressIndicator: true,
+                    // Añadimos el video con márgenes aquí.
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0), // Márgenes a los lados
+                      child: YoutubePlayer(
+                        controller: _controller,
+                        showVideoProgressIndicator: true,
+                      ),
                     ),
                     Expanded(
                       flex: 2,
