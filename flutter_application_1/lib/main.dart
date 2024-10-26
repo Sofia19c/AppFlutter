@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
                         children: [
                           Text(
@@ -166,12 +166,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    // Añadimos el video con márgenes aquí.
+                    // Añadimos padding alrededor del video para darle más margen
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0), // Márgenes a los lados
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
                       child: YoutubePlayer(
                         controller: _controller,
                         showVideoProgressIndicator: true,
+                      ),
+                    ),
+                    // Añadimos el nuevo texto aquí, con márgenes en los lados y arriba
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                      child: Text(
+                        'Cursos virtuales 100% Profesionales',
+                        style: TextStyle(
+                          color: Colors.pink,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                     Expanded(

@@ -13,10 +13,7 @@ class GeneratorPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Aquí puedes agregar cualquier contenido que quieras en vez de las palabras aleatorias.
-          Text(
-            'Bienvenido a la página principal', 
-            style: TextStyle(fontSize: 24),
-          ),
+       
           SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
