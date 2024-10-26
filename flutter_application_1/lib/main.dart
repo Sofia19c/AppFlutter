@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart'; // Importamos el paquete para reproducir videos de YouTube.
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 void main() {
   runApp(MyApp());
@@ -39,13 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
   bool isDrawerOpen = false;
   bool isRailVisible = true;
 
-  // Inicializamos el controlador de YouTube.
   late YoutubePlayerController _controller;
 
   @override
   void initState() {
     super.initState();
-    // Aquí inicializamos el controlador con el ID del video de YouTube.
     _controller = YoutubePlayerController(
       initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=2EXsmrD3_RM&t=397s')!,
       flags: const YoutubePlayerFlags(
@@ -139,6 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 20), // Espacio añadido entre la imagen y el primer texto
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
@@ -166,17 +165,16 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     SizedBox(height: 20),
-                    // Añadimos padding alrededor del video para darle más margen
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: YoutubePlayer(
                         controller: _controller,
                         showVideoProgressIndicator: true,
                       ),
                     ),
-                    // Añadimos el nuevo texto aquí, con márgenes en los lados y arriba
+                    SizedBox(height: 10),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Text(
                         'Cursos virtuales 100% Profesionales',
                         style: TextStyle(
