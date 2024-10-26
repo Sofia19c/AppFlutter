@@ -151,7 +151,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             textAlign: TextAlign.center,
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: 20),
                           Text(
                             'Bellísimas Nails academia de uñas virtual, aprende con nosotros y conviértete en manicurista profesional, estudia con nuestros cursos virtuales y aprende todo sobre el mundo de uñas.',
                             style: TextStyle(
@@ -172,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         showVideoProgressIndicator: true,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
@@ -187,9 +187,13 @@ class _MyHomePageState extends State<MyHomePage> {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 10),
-                          Image.asset(
-                            'assets/images/unias_uno.png', 
-                            fit: BoxFit.contain,
+                          SizedBox(
+                            width: 150,
+                            height: 150,
+                            child: Image.asset(
+                              'assets/images/unias_uno.png',
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ],
                       ),
