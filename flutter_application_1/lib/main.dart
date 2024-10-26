@@ -137,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                     ),
-                    SizedBox(height: 20), // Espacio añadido entre la imagen y el primer texto
+                    SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Column(
@@ -175,14 +175,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Text(
-                        'Cursos virtuales 100% Profesionales',
-                        style: TextStyle(
-                          color: Colors.pink,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                        textAlign: TextAlign.center,
+                      child: Column(
+                        children: [
+                          Text(
+                            'Cursos virtuales 100% Profesionales',
+                            style: TextStyle(
+                              color: Colors.pink,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(height: 10),
+                          Image.asset(
+                            'assets/images/unias_uno.png', 
+                            fit: BoxFit.contain,
+                          ),
+                        ],
                       ),
                     ),
                     Expanded(
