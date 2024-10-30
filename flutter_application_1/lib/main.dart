@@ -36,7 +36,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
-  bool isDrawerOpen = false;
   bool isRailVisible = true;
 
   late YoutubePlayerController _controller;
@@ -81,15 +80,13 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: Colors.white,
             title: Text('Namer App'),
             actions: [
-              Builder(
-                builder: (context) => IconButton(
-                  icon: Icon(isRailVisible ? Icons.close : Icons.menu),
-                  onPressed: () {
-                    setState(() {
-                      isRailVisible = !isRailVisible;
-                    });
-                  },
-                ),
+              IconButton(
+                icon: Icon(isRailVisible ? Icons.close : Icons.menu),
+                onPressed: () {
+                  setState(() {
+                    isRailVisible = !isRailVisible;
+                  });
+                },
               ),
             ],
           ),
@@ -127,7 +124,6 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -186,19 +182,25 @@ class _MyHomePageState extends State<MyHomePage> {
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 10),
-                            SizedBox(
-                              width: 150,
-                              height: 150,
-                              child: Image.asset(
-                                'assets/images/unias_uno.png',
-                                fit: BoxFit.contain,
+                            GestureDetector(
+                              onTap: () {
+                                print("¡Imagen presionada!");
+                              },
+                              child: SizedBox(
+                                width: 150,
+                                height: 150,
+                                child: Image.asset(
+                                  'assets/images/unias_uno.png',
+                                  fit: BoxFit.contain,
+                                ),
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 20), // Espacio adicional para separación
+                      SizedBox(height: 20),
                       Container(
+                        height: 400,
                         color: Colors.white,
                         child: page,
                       ),
