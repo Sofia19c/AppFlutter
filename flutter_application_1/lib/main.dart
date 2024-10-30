@@ -125,87 +125,85 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               Expanded(
-                child: Column(
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Padding(
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Image.asset(
                           'assets/images/logo_Bellisimas.png',
                           fit: BoxFit.contain,
                         ),
                       ),
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Bellísimas Nails Academia de uñas online Cursos Virtuales',
-                            style: TextStyle(
-                              color: Colors.pink,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                      SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Bellísimas Nails Academia de uñas online Cursos Virtuales',
+                              style: TextStyle(
+                                color: Colors.pink,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Bellísimas Nails academia de uñas virtual, aprende con nosotros y conviértete en manicurista profesional, estudia con nuestros cursos virtuales y aprende todo sobre el mundo de uñas.',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.normal,
-                              fontSize: 16,
+                            SizedBox(height: 20),
+                            Text(
+                              'Bellísimas Nails academia de uñas virtual, aprende con nosotros y conviértete en manicurista profesional, estudia con nuestros cursos virtuales y aprende todo sobre el mundo de uñas.',
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.normal,
+                                fontSize: 16,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: YoutubePlayer(
-                        controller: _controller,
-                        showVideoProgressIndicator: true,
+                      SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: YoutubePlayer(
+                          controller: _controller,
+                          showVideoProgressIndicator: true,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Cursos virtuales 100% Profesionales',
-                            style: TextStyle(
-                              color: Colors.pink,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
+                      SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Cursos virtuales 100% Profesionales',
+                              style: TextStyle(
+                                color: Colors.pink,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(height: 10),
-                          SizedBox(
-                            width: 150,
-                            height: 150,
-                            child: Image.asset(
-                              'assets/images/unias_uno.png',
-                              fit: BoxFit.contain,
+                            SizedBox(height: 10),
+                            SizedBox(
+                              width: 150,
+                              height: 150,
+                              child: Image.asset(
+                                'assets/images/unias_uno.png',
+                                fit: BoxFit.contain,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Container(
+                      SizedBox(height: 20), // Espacio adicional para separación
+                      Container(
                         color: Colors.white,
                         child: page,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
