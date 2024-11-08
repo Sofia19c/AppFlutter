@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
@@ -217,7 +217,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                   ),
-                                  // Agrega más imágenes aquí siguiendo el mismo patrón
+                                  SizedBox(width: 10), // Espacio entre las imágenes
+                                  GestureDetector(
+                                    onTap: () {
+                                      print('¡Imagen unias_tres presionada!');
+                                    },
+                                    child: SizedBox(
+                                      width: 150,
+                                      height: 150,
+                                      child: Image.asset(
+                                        'assets/images/unias_tres.png',
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
+                                  // Puedes seguir añadiendo más imágenes siguiendo este mismo patrón
                                 ],
                               ),
                             ),
