@@ -36,6 +36,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
+  bool isDrawerOpen = false;
   bool isRailVisible = true;
 
   late YoutubePlayerController _controller;
@@ -80,13 +81,15 @@ class _MyHomePageState extends State<MyHomePage> {
             backgroundColor: Colors.white,
             title: Text('Namer App'),
             actions: [
-              IconButton(
-                icon: Icon(isRailVisible ? Icons.close : Icons.menu),
-                onPressed: () {
-                  setState(() {
-                    isRailVisible = !isRailVisible;
-                  });
-                },
+              Builder(
+                builder: (context) => IconButton(
+                  icon: Icon(isRailVisible ? Icons.close : Icons.menu),
+                  onPressed: () {
+                    setState(() {
+                      isRailVisible = !isRailVisible;
+                    });
+                  },
+                ),
               ),
             ],
           ),
@@ -182,26 +185,48 @@ class _MyHomePageState extends State<MyHomePage> {
                               textAlign: TextAlign.center,
                             ),
                             SizedBox(height: 10),
-                            GestureDetector(
-                              onTap: () {
-                                print("¡Imagen presionada!");
-                              },
-                              child: SizedBox(
-                                width: 150,
-                                height: 150,
-                                child: Image.asset(
-                                  'assets/images/unias_uno.png',
-                                  fit: BoxFit.contain,
-                                ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      print('¡Imagen unias_uno presionada!');
+                                    },
+                                    child: SizedBox(
+                                      width: 150,
+                                      height: 150,
+                                      child: Image.asset(
+                                        'assets/images/unias_uno.png',
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(width: 10), // Espacio entre las imágenes
+                                  GestureDetector(
+                                    onTap: () {
+                                      print('¡Imagen unias_dos presionada!');
+                                    },
+                                    child: SizedBox(
+                                      width: 150,
+                                      height: 150,
+                                      child: Image.asset(
+                                        'assets/images/unias_dos.png',
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
+                                  // Agrega más imágenes aquí siguiendo el mismo patrón
+                                ],
                               ),
                             ),
                           ],
                         ),
                       ),
                       SizedBox(height: 20),
-                      Container(
-                        height: 400,
-                        color: Colors.white,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
                         child: page,
                       ),
                     ],
