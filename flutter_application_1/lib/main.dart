@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
@@ -203,7 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 10), // Espacio entre las imágenes
+                                  SizedBox(width: 10),
                                   GestureDetector(
                                     onTap: () {
                                       print('¡Imagen unias_dos presionada!');
@@ -217,7 +217,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(width: 10), // Espacio entre las imágenes
+                                  SizedBox(width: 10),
                                   GestureDetector(
                                     onTap: () {
                                       print('¡Imagen unias_tres presionada!');
@@ -231,7 +231,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                       ),
                                     ),
                                   ),
-                                  // Puedes seguir añadiendo más imágenes siguiendo este mismo patrón
+                                  SizedBox(width: 10),
+                                  GestureDetector(
+                                    onTap: () {
+                                      print('¡Imagen unias_cuatro presionada!');
+                                    },
+                                    child: SizedBox(
+                                      width: 150,
+                                      height: 150,
+                                      child: Image.asset(
+                                        'assets/images/unias_cuatro.png',
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
                                 ],
                               ),
                             ),
