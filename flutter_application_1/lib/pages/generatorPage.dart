@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/main.dart';
 
@@ -13,7 +13,7 @@ class GeneratorPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           // Aquí puedes agregar cualquier contenido que quieras en vez de las palabras aleatorias.
-       
+
           SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -24,13 +24,6 @@ class GeneratorPage extends StatelessWidget {
                 },
                 icon: Icon(Icons.favorite_border),
                 label: Text('Acción'),
-              ),
-              SizedBox(width: 10),
-              ElevatedButton(
-                onPressed: () {
-                  // Aquí puedes añadir otra acción o lógica según lo que desees.
-                },
-                child: Text('Otra acción'),
               ),
             ],
           ),
