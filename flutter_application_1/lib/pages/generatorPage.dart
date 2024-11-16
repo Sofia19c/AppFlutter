@@ -18,13 +18,7 @@ class GeneratorPage extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ElevatedButton.icon(
-                onPressed: () {
-                  // Aquí puedes añadir lógica adicional si es necesario.
-                },
-                icon: Icon(Icons.favorite_border),
-                label: Text('Acción'),
-              ),
+              // codigo
             ],
           ),
         ],
