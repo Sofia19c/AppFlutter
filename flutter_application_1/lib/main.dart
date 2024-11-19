@@ -217,6 +217,27 @@ class _MyHomePageState extends State<MyHomePage> {
                                 ],
                               ),
                             ),
+                            SizedBox(height: 20),
+                            ElevatedButton(
+                              onPressed: () {
+                                print('Empezar Ahora presionado');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.pink, // Color rosado
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 40, vertical: 15),
+                                textStyle: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                                child: Text(
+                                'Empezar Ahora',
+                                style: TextStyle(
+                                  color: Colors.white, // Texto en color blanco
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -264,6 +285,7 @@ class _ImageWithAddToCartState extends State<ImageWithAddToCart> {
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
