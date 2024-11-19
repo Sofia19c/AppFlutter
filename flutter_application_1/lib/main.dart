@@ -264,7 +264,6 @@ class _ImageWithAddToCartState extends State<ImageWithAddToCart> {
       });
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -284,12 +283,12 @@ class _ImageWithAddToCartState extends State<ImageWithAddToCart> {
             Container(
               width: 150,
               height: 150,
-              color: Colors.black.withOpacity(0.5),
+              color: Colors.pink.withOpacity(0.7), // Fondo rosado
               child: Center(
                 child: Text(
                   'ADD TO CART',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.white, // Texto en blanco
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
