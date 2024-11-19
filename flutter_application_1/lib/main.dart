@@ -279,7 +279,7 @@ class _ImageWithAddToCartState extends State<ImageWithAddToCart> {
     Provider.of<MyAppState>(context, listen: false)
         .addToFavorites(widget.imagePath);
 
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 1), () {
       setState(() {
         showAddToCart = false;
       });
