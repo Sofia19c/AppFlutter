@@ -19,7 +19,9 @@ class MyApp extends StatelessWidget {
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 252, 252, 252)),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 252, 252, 252),
+          ),
         ),
         home: MyHomePage(),
       ),
@@ -27,7 +29,18 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyAppState extends ChangeNotifier {}
+class MyAppState extends ChangeNotifier {
+  final List<String> _favorites = [];
+
+  List<String> get favorites => _favorites;
+
+  void addToFavorites(String imagePath) {
+    if (!_favorites.contains(imagePath)) {
+      _favorites.add(imagePath);
+      notifyListeners();
+    }
+  }
+}
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -36,7 +49,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
-  bool isDrawerOpen = false;
   bool isRailVisible = true;
 
   late YoutubePlayerController _controller;
@@ -45,7 +57,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _controller = YoutubePlayerController(
-      initialVideoId: YoutubePlayer.convertUrlToId('https://www.youtube.com/watch?v=2EXsmrD3_RM&t=397s')!,
+      initialVideoId: YoutubePlayer.convertUrlToId(
+        'https://www.youtube.com/watch?v=2EXsmrD3_RM&t=397s',
+      )!,
       flags: const YoutubePlayerFlags(
         autoPlay: false,
         mute: false,
@@ -190,75 +204,16 @@ class _MyHomePageState extends State<MyHomePage> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  GestureDetector(
-                                    onTap: () {
-                                      print('¡Imagen unias_uno presionada!');
-                                    },
-                                    child: SizedBox(
-                                      width: 150,
-                                      height: 150,
-                                      child: Image.asset(
-                                        'assets/images/unias_uno.png',
-                                        fit: BoxFit.contain,
-                                      ),
+                                  for (var imagePath in [
+                                    'assets/images/unias_uno.png',
+                                    'assets/images/unias_dos.png',
+                                    'assets/images/unias_tres.png',
+                                    'assets/images/unias_cuatro.png',
+                                    'assets/images/unias_cinco.png'
+                                  ])
+                                    ImageWithAddToCart(
+                                      imagePath: imagePath,
                                     ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  GestureDetector(
-                                    onTap: () {
-                                      print('¡Imagen unias_dos presionada!');
-                                    },
-                                    child: SizedBox(
-                                      width: 150,
-                                      height: 150,
-                                      child: Image.asset(
-                                        'assets/images/unias_dos.png',
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  GestureDetector(
-                                    onTap: () {
-                                      print('¡Imagen unias_tres presionada!');
-                                    },
-                                    child: SizedBox(
-                                      width: 150,
-                                      height: 150,
-                                      child: Image.asset(
-                                        'assets/images/unias_tres.png',
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  GestureDetector(
-                                    onTap: () {
-                                      print('¡Imagen unias_cuatro presionada!');
-                                    },
-                                    child: SizedBox(
-                                      width: 150,
-                                      height: 150,
-                                      child: Image.asset(
-                                        'assets/images/unias_cuatro.png',
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(width: 10),
-                                  GestureDetector(
-                                    onTap: () {
-                                      print('¡Imagen unias_cinco presionada!');
-                                    },
-                                    child: SizedBox(
-                                      width: 150,
-                                      height: 150,
-                                      child: Image.asset(
-                                        'assets/images/unias_cinco.png',
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),
@@ -278,6 +233,71 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         );
       },
+    );
+  }
+}
+
+class ImageWithAddToCart extends StatefulWidget {
+  final String imagePath;
+
+  const ImageWithAddToCart({required this.imagePath});
+
+  @override
+  _ImageWithAddToCartState createState() => _ImageWithAddToCartState();
+}
+
+class _ImageWithAddToCartState extends State<ImageWithAddToCart> {
+  bool showAddToCart = false;
+
+  void handleTap(BuildContext context) {
+    setState(() {
+      showAddToCart = true;
+    });
+
+    // Añadir a favoritos
+    Provider.of<MyAppState>(context, listen: false)
+        .addToFavorites(widget.imagePath);
+
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        showAddToCart = false;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => handleTap(context),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          SizedBox(
+            width: 150,
+            height: 150,
+            child: Image.asset(
+              widget.imagePath,
+              fit: BoxFit.contain,
+            ),
+          ),
+          if (showAddToCart)
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.black.withOpacity(0.5),
+              child: Center(
+                child: Text(
+                  'ADD TO CART',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
