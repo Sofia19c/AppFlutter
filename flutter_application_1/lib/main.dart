@@ -75,16 +75,122 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // Seleccionar la página activa
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorPage();
+        page = SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Image.asset(
+                  'assets/images/logo_Bellisimas.png',
+                  fit: BoxFit.contain,
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'Bellísimas Nails Academia de uñas online Cursos Virtuales',
+                      style: TextStyle(
+                        color: Colors.pink,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Bellísimas Nails academia de uñas virtual, aprende con nosotros y conviértete en manicurista profesional, estudia con nuestros cursos virtuales y aprende todo sobre el mundo de uñas.',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: YoutubePlayer(
+                  controller: _controller,
+                  showVideoProgressIndicator: true,
+                ),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  children: [
+                    Text(
+                      'Cursos virtuales 100% Profesionales',
+                      style: TextStyle(
+                        color: Colors.pink,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 10),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          for (var imagePath in [
+                            'assets/images/unias_uno.png',
+                            'assets/images/unias_dos.png',
+                            'assets/images/unias_tres.png',
+                            'assets/images/unias_cuatro.png',
+                            'assets/images/unias_cinco.png'
+                          ])
+                            ImageWithAddToCart(
+                              imagePath: imagePath,
+                            ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        print('Empezar Ahora presionado');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.pink, // Color rosado
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 40, vertical: 15),
+                        textStyle: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      child: Text(
+                        'Empezar Ahora',
+                        style: TextStyle(
+                          color: Colors.white, // Texto en color blanco
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+            ],
+          ),
+        );
         break;
       case 1:
         page = FavoritesPage();
         break;
       default:
-        throw UnimplementedError('no widget for $selectedIndex');
+        throw UnimplementedError('No widget for $selectedIndex');
     }
 
     return LayoutBuilder(
@@ -139,116 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                        child: Image.asset(
-                          'assets/images/logo_Bellisimas.png',
-                          fit: BoxFit.contain,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Bellísimas Nails Academia de uñas online Cursos Virtuales',
-                              style: TextStyle(
-                                color: Colors.pink,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 20),
-                            Text(
-                              'Bellísimas Nails academia de uñas virtual, aprende con nosotros y conviértete en manicurista profesional, estudia con nuestros cursos virtuales y aprende todo sobre el mundo de uñas.',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.normal,
-                                fontSize: 16,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: YoutubePlayer(
-                          controller: _controller,
-                          showVideoProgressIndicator: true,
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Column(
-                          children: [
-                            Text(
-                              'Cursos virtuales 100% Profesionales',
-                              style: TextStyle(
-                                color: Colors.pink,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 10),
-                            SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  for (var imagePath in [
-                                    'assets/images/unias_uno.png',
-                                    'assets/images/unias_dos.png',
-                                    'assets/images/unias_tres.png',
-                                    'assets/images/unias_cuatro.png',
-                                    'assets/images/unias_cinco.png'
-                                  ])
-                                    ImageWithAddToCart(
-                                      imagePath: imagePath,
-                                    ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 20),
-                            ElevatedButton(
-                              onPressed: () {
-                                print('Empezar Ahora presionado');
-                              },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.pink, // Color rosado
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 40, vertical: 15),
-                                textStyle: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                                child: Text(
-                                'Empezar Ahora',
-                                style: TextStyle(
-                                  color: Colors.white, // Texto en color blanco
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: page,
-                      ),
-                    ],
-                  ),
-                ),
+                child: page,
               ),
             ],
           ),
@@ -305,12 +302,12 @@ class _ImageWithAddToCartState extends State<ImageWithAddToCart> {
             Container(
               width: 150,
               height: 150,
-              color: Colors.pink.withOpacity(0.7), // Fondo rosado
+              color: Colors.pink.withOpacity(0.7),
               child: Center(
                 child: Text(
                   'ADD TO CART',
                   style: TextStyle(
-                    color: Colors.white, // Texto en blanco
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
