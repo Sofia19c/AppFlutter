@@ -37,7 +37,7 @@ class FavoritesPage extends StatelessWidget {
                 SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    'Imagen favorita ${index + 1}',
+                    'Curso añadido  ${index + 1}',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
