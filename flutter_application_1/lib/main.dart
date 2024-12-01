@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'package:flutter_application_1/pages/empezarAhora.dart';
 
 void main() {
   runApp(MyApp());
@@ -160,7 +161,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        print('Empezar Ahora presionado');
+                        navigateToStart(context); // Llamar a la función de lógica
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.pink, // Color rosado
