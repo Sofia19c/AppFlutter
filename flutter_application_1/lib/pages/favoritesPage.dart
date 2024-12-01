@@ -46,7 +46,7 @@ class FavoritesPage extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.delete, color: Colors.red),
+                  icon: Icon(Icons.delete, color: Colors.pink),
                   onPressed: () {
                     Provider.of<MyAppState>(context, listen: false)
                         .favorites
