@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/registrate.dart';
 
 // Función para navegar a la pantalla EmpezarAhoraPage
 void navigateToStart(BuildContext context) {
@@ -89,7 +89,11 @@ class EmpezarAhoraPage extends StatelessWidget {
                     // Botón "Regístrate"
                     ElevatedButton(
                       onPressed: () {
-                        // Lógica para registrarse
+                        // Lógica para navegar a SuscribetePage
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RegistratePage()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
