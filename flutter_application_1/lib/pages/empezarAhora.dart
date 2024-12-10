@@ -10,6 +10,7 @@ void navigateToStart(BuildContext context) {
   );
 }
 
+
 // Clase para la página "Empezar Ahora"
 class EmpezarAhoraPage extends StatelessWidget {
   @override
