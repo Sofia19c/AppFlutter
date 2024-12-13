@@ -57,7 +57,7 @@ class _RegistratePageState extends State<RegistratePage> {
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.85,
                 padding: const EdgeInsets.all(20.0),
-                margin: EdgeInsets.only(top: 80.0), // Mover el contenedor más abajo
+                margin: EdgeInsets.only(top: 150.0), // Mover el contenedor más abajo
                 decoration: BoxDecoration(
                   color: Colors.pink.shade300,
                   borderRadius: BorderRadius.circular(15),
