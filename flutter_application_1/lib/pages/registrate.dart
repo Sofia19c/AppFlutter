@@ -11,11 +11,22 @@ class _RegistratePageState extends State<RegistratePage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
+  // Expresión regular para validar un correo electrónico
+  final RegExp emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+$');
+
   // Método para validar y procesar el registro
   void validateAndRegister() {
-    final email = emailController.text;
+    final email = emailController.text.trim();
     final password = passwordController.text;
     final confirmPassword = confirmPasswordController.text;
+
+    if (!emailRegex.hasMatch(email)) {
+      // Correo no válido
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Por favor, ingresa un correo válido.')),
+      );
+      return;
+    }
 
     if (password.length < 8) {
       // Contraseña demasiado corta
