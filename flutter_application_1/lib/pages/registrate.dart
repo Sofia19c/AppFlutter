@@ -1,6 +1,46 @@
 import 'package:flutter/material.dart';
 
-class RegistratePage extends StatelessWidget {
+class RegistratePage extends StatefulWidget {
+  @override
+  _RegistratePageState createState() => _RegistratePageState();
+}
+
+class _RegistratePageState extends State<RegistratePage> {
+  // Controladores para los campos de texto
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
+  // Método para validar y procesar el registro
+  void validateAndRegister() {
+    final email = emailController.text;
+    final password = passwordController.text;
+    final confirmPassword = confirmPasswordController.text;
+
+    if (password.length < 8) {
+      // Contraseña demasiado corta
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('La contraseña debe tener al menos 8 caracteres.')),
+      );
+      return;
+    }
+
+    if (password != confirmPassword) {
+      // Contraseñas no coinciden
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Las contraseñas no coinciden.')),
+      );
+      return;
+    }
+
+    // Si pasa la validación, procesamos el registro
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Cuenta creada exitosamente.')),
+    );
+
+    // Aquí puedes agregar la lógica para crear la cuenta en tu backend
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,47 +49,71 @@ class RegistratePage extends StatelessWidget {
         title: Text('Regístrate'),
       ),
       body: SingleChildScrollView(
-        child: Container(
-          height: MediaQuery.of(context).size.height, // Tamaño completo de la pantalla
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            // Contenedor centrado
+            Center(
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.85,
                 padding: const EdgeInsets.all(20.0),
+                margin: EdgeInsets.only(top: 80.0), // Mover el contenedor más abajo
                 decoration: BoxDecoration(
                   color: Colors.pink.shade300,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Column(
-                  mainAxisSize: MainAxisSize.min, // Tamaño ajustado al contenido
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
                       'BIENVENIDO',
-                      textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     SizedBox(height: 20),
-                    _buildTextField('Correo electrónico'),
-                    SizedBox(height: 15),
-                    _buildTextField('Contraseña', isPassword: true),
-                    SizedBox(height: 15),
-                    _buildTextField('Confirma tu contraseña', isPassword: true),
+                    TextField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        hintText: 'Correo electrónico',
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      controller: passwordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: 'Contraseña',
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextField(
+                      controller: confirmPasswordController,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: 'Confirma tu contraseña',
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
                     SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: () {
-                        // Lógica para continuar
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('¡Registro exitoso!'),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
-                      },
+                      onPressed: validateAndRegister,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: Colors.pink,
@@ -63,25 +127,8 @@ class RegistratePage extends StatelessWidget {
                 ),
               ),
             ),
-          ),
+          ],
         ),
-      ),
-    );
-  }
-
-  // Widget para construir los TextFields
-  Widget _buildTextField(String hint, {bool isPassword = false}) {
-    return TextField(
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        hintText: hint,
-        filled: true,
-        fillColor: Colors.white,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide.none,
-        ),
-        contentPadding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       ),
     );
   }
