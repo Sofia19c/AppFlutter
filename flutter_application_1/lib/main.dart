@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_application_1/pages/generatorPage.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:flutter_application_1/pages/empezarAhora.dart';
