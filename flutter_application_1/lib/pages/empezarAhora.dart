@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/registrate.dart';
+import 'package:flutter_application_1/pages/iniciarSesion.dart';
 
 // Función para navegar a la pantalla EmpezarAhoraPage
 void navigateToStart(BuildContext context) {
@@ -66,7 +67,10 @@ class EmpezarAhoraPage extends StatelessWidget {
                     // Botón "Iniciar sesión"
                     ElevatedButton(
                       onPressed: () {
-                        // Lógica para iniciar sesión
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => IniciarSesionPage()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
