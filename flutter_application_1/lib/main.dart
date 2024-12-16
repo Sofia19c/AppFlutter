@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; 
 import 'package:provider/provider.dart';
 import 'package:flutter_application_1/pages/favoritesPage.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
@@ -49,7 +49,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var selectedIndex = 0;
-  bool isRailVisible = true;
 
   late YoutubePlayerController _controller;
 
@@ -193,64 +192,33 @@ class _MyHomePageState extends State<MyHomePage> {
         throw UnimplementedError('No widget for $selectedIndex');
     }
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: Text('Namer App'),
-            actions: [
-              Builder(
-                builder: (context) => IconButton(
-                  icon: Icon(isRailVisible ? Icons.close : Icons.menu),
-                  onPressed: () {
-                    setState(() {
-                      isRailVisible = !isRailVisible;
-                    });
-                  },
-                ),
-              ),
-            ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('Namer App'),
+      ),
+      body: page,
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedIndex,
+        selectedItemColor: Colors.pink,
+        unselectedItemColor: Colors.pink[300],
+        onTap: (value) {
+          setState(() {
+            selectedIndex = value;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
-          body: Row(
-            children: [
-              if (isRailVisible)
-                SafeArea(
-                  child: NavigationRail(
-                    backgroundColor: Colors.pink[100],
-                    selectedIconTheme: IconThemeData(
-                      color: Colors.pink,
-                    ),
-                    unselectedIconTheme: IconThemeData(
-                      color: Colors.pink[300],
-                    ),
-                    extended: constraints.maxWidth >= 600,
-                    destinations: [
-                      NavigationRailDestination(
-                        icon: Icon(Icons.home),
-                        label: Text('Home'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.favorite),
-                        label: Text('Favorites'),
-                      ),
-                    ],
-                    selectedIndex: selectedIndex,
-                    onDestinationSelected: (value) {
-                      setState(() {
-                        selectedIndex = value;
-                      });
-                    },
-                  ),
-                ),
-              Expanded(
-                child: page,
-              ),
-            ],
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorites',
           ),
-        );
-      },
+        ],
+      ),
     );
   }
 }
