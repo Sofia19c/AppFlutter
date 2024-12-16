@@ -195,14 +195,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text('Namer App'),
+        backgroundColor: Colors.pink, // Color rosado para el AppBar
+        title: Text(
+          'Namer App',
+          style: TextStyle(color: Colors.white), // Título en blanco
+        ),
+        iconTheme: IconThemeData(color: Colors.white), // Íconos en blanco
       ),
       body: page,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.pink,
-        unselectedItemColor: Colors.pink[300],
+        selectedItemColor: Colors.white, // Íconos seleccionados en blanco
+        unselectedItemColor: Colors.pink, // Íconos no seleccionados en rosa oscuro
+        backgroundColor: Colors.pink[200], // Fondo del menú en rosa
         onTap: (value) {
           setState(() {
             selectedIndex = value;
@@ -286,4 +291,4 @@ class _ImageWithAddToCartState extends State<ImageWithAddToCart> {
       ),
     );
   }
-}
+}  
