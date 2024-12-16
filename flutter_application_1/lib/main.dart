@@ -305,7 +305,7 @@ class _ImageWithAddToCartState extends State<ImageWithAddToCart> {
               color: Colors.pink.withOpacity(0.7),
               child: Center(
                 child: Text(
-                  'ADD TO CART',
+                  'ADD TO FAV',
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
