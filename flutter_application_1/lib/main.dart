@@ -4,7 +4,7 @@ import 'package:flutter_application_1/pages/favoritesPage.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:flutter_application_1/pages/empezarAhora.dart';
 
-void main() {
+void main() {                                                                             
   runApp(MyApp());
 }
 
