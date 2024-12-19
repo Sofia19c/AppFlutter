@@ -1,138 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../main.dart'; // Asegúrate de que la importación sea correcta según tu estructura.
-import 'package:flutter_application_1/pages/detalleCurso.dart';
-
-class FavoritesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final favorites = Provider.of<MyAppState>(context).favorites;
-
-    if (favorites.isEmpty) {
-      return Center(
-        child: Text(
-          'Aún no hay contenido en la página de favoritos.',
-          style: TextStyle(fontSize: 16, color: Colors.grey),
-        ),
-      );
-    }
-
-    return ListView.builder(
-      itemCount: favorites.length,
-      itemBuilder: (context, index) {
-        final imagePath = favorites[index];
-        return Card(
-          key: ValueKey(imagePath), // Clave única basada en el contenido
-          margin: const EdgeInsets.symmetric(vertical: 10.0),
-          elevation: 4.0,
-          child: InkWell(
-            // Hace la tarjeta interactiva
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetalleCursoPage(
-                    titulo: 'Curso Decoración Avanzado',
-                    imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
-                    precio: '99.900',
-                    conferencias: 47,
-                    cuestionarios: 0,
-                    duracion: '180 días',
-                    nivel: 'Experto',
-                    idioma: 'Español',
-                    estudiantes: 1425,
-                    certificado: 'No',
-                    evaluaciones: 'Sí',
-                  ),
-                ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetalleCursoPage(
-                            titulo: 'Curso manicure y pedicure virtual',
-                            imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
-                            precio: '99.000',
-                            conferencias: 40,
-                            cuestionarios: 11,
-                            duracion: '180 días',
-                            nivel: 'Principiante',
-                            idioma: 'Español',
-                            estudiantes: 1621,
-                            certificado: 'Sí',
-                            evaluaciones: 'Sí',
-                          ),
-                        ),
-                      );
-                    },
-                    child: Image.asset(
-                      imagePath,
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetalleCursoPage(
-                              titulo: 'Curso Decoración Bob Esponja',
-                              imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
-                              precio: 'Gratis',
-                              conferencias: 9,
-                              cuestionarios: 0,
-                              duracion: '10 Horas',
-                              nivel: 'Todos los niveles',
-                              idioma: 'Español',
-                              estudiantes: 378,
-                              certificado: 'No',
-                              evaluaciones: 'Sí',
-                            ),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'Curso añadido ${index + 1}',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.pink,
-                        ),
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.delete, color: Colors.pink),
-                    onPressed: () {
-                      Provider.of<MyAppState>(context, listen: false)
-                          .favorites
-                          .removeAt(index);
-                      Provider.of<MyAppState>(context, listen: false)
-                          .notifyListeners();
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-// Actualización para DetalleCursoPage con el menú rosado
 
 class DetalleCursoPage extends StatelessWidget {
   final String titulo;
@@ -147,7 +13,8 @@ class DetalleCursoPage extends StatelessWidget {
   final String certificado;
   final String evaluaciones;
 
-  DetalleCursoPage({
+  const DetalleCursoPage({
+    Key? key,
     required this.titulo,
     required this.imagenPath,
     required this.precio,
@@ -159,73 +26,91 @@ class DetalleCursoPage extends StatelessWidget {
     required this.estudiantes,
     required this.certificado,
     required this.evaluaciones,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(titulo),
-        backgroundColor: Colors.pink[200], // Color rosado en la barra superior
+        backgroundColor: Colors.pink[200],
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Espaciado entre contenido y barra
         children: [
-          // Imagen del curso
-          Image.asset(
-            imagenPath,
-            fit: BoxFit.cover,
-            height: 200,
-          ),
-
-          // Precio y botón "Empezar Ahora"
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text(
-                  precio,
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset(
+                      imagenPath,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: 200,
+                    ),
+                    SizedBox(height: 16),
+                    Text(
+                      precio,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.pink[200],
+                      ),
+                      child: Text('EMPEZAR AHORA'),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      'Características del curso',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    _buildDetailRow(Icons.menu_book, 'Conferencias: $conferencias'),
+                    _buildDetailRow(Icons.question_answer, 'Cuestionarios: $cuestionarios'),
+                    _buildDetailRow(Icons.access_time, 'Duración: $duracion'),
+                    _buildDetailRow(Icons.star, 'Nivel de habilidad: $nivel'),
+                    _buildDetailRow(Icons.language, 'Idioma: $idioma'),
+                    _buildDetailRow(Icons.people, 'Estudiantes: $estudiantes'),
+                    _buildDetailRow(Icons.verified, 'Certificado: $certificado'),
+                    _buildDetailRow(Icons.check_circle, 'Evaluaciones: $evaluaciones'),
+                  ],
                 ),
-                SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: () {
-                    // Agrega la funcionalidad del botón aquí
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor:  Colors.pink[200],
-                  ),
-                  child: Text(
-                    "EMPEZAR AHORA",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
-
-          // Menú de navegación
           Container(
-            color: Colors.pink[200], // Fondo rosado para el menú
+            color: Colors.pink[200],
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 TextButton(
                   onPressed: () {
                     // Navegar a Visión General
                   },
                   child: Text(
-                    'Visión General',
+                    'Visión general',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
                 TextButton(
                   onPressed: () {
-                    // Navegar a Currículum
+                    // Navegar a Curriculum
                   },
                   child: Text(
-                    'Currículum',
+                    'Curriculum',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
@@ -241,32 +126,22 @@ class DetalleCursoPage extends StatelessWidget {
               ],
             ),
           ),
+        ],
+      ),
+    );
+  }
 
-          // Características del curso
+  Widget _buildDetailRow(IconData icon, String text) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.pink[200]),
+          SizedBox(width: 10),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    'Características del curso',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Text('Conferencias: $conferencias'),
-                  Text('Cuestionarios: $cuestionarios'),
-                  Text('Duración: $duracion'),
-                  Text('Nivel: $nivel'),
-                  Text('Idioma: $idioma'),
-                  Text('Estudiantes: $estudiantes'),
-                  Text('Certificado: $certificado'),
-                  Text('Evaluaciones: $evaluaciones'),
-                ],
-              ),
+            child: Text(
+              text,
+              style: TextStyle(fontSize: 16),
             ),
           ),
         ],
