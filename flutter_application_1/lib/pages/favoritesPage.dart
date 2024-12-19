@@ -28,17 +28,24 @@ class FavoritesPage extends StatelessWidget {
           child: InkWell(
             // Hace la tarjeta interactiva
             onTap: () {
-              // Navega a la pantalla de detalles
               Navigator.push(
                 context,
-                  MaterialPageRoute(
+                MaterialPageRoute(
                   builder: (context) => DetalleCursoPage(
-                            titulo: 'Curso añadido ${index + 1}', // Título dinámico
-                            imagenPath: imagePath,               // Ruta de la imagen
-                            descripcion: 'Descripción breve del curso añadido ${index + 1}', // Descripción provisional
-                          ),
-                        ),
-                      );
+                    titulo: 'Curso Decoración Bob Esponja',
+                    imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
+                    precio: 'Gratis',
+                    conferencias: 9,
+                    cuestionarios: 0,
+                    duracion: '10 Horas',
+                    nivel: 'Todos los niveles',
+                    idioma: 'Español',
+                    estudiantes: 378,
+                    certificado: 'No',
+                    evaluaciones: 'Sí',
+                  ),
+                ),
+              );
             },
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -46,14 +53,21 @@ class FavoritesPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      // Navega a la página de detalles al tocar la imagen
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => DetalleCursoPage(
-                            titulo: 'Curso añadido ${index + 1}', // Título dinámico
-                            imagenPath: imagePath,               // Ruta de la imagen
-                            descripcion: 'Descripción breve del curso añadido ${index + 1}', // Descripción provisional
+                            titulo: 'Curso Decoración Bob Esponja',
+                            imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
+                            precio: 'Gratis',
+                            conferencias: 9,
+                            cuestionarios: 0,
+                            duracion: '10 Horas',
+                            nivel: 'Todos los niveles',
+                            idioma: 'Español',
+                            estudiantes: 378,
+                            certificado: 'No',
+                            evaluaciones: 'Sí',
                           ),
                         ),
                       );
@@ -69,14 +83,21 @@ class FavoritesPage extends StatelessWidget {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        // Navega a la página de detalles al tocar el texto
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => DetalleCursoPage(
-                              titulo: 'Curso añadido ${index + 1}', // Título dinámico
-                              imagenPath: imagePath,               // Ruta de la imagen
-                              descripcion: 'Descripción breve del curso añadido ${index + 1}', // Descripción provisional
+                              titulo: 'Curso Decoración Bob Esponja',
+                              imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
+                              precio: 'Gratis',
+                              conferencias: 9,
+                              cuestionarios: 0,
+                              duracion: '10 Horas',
+                              nivel: 'Todos los niveles',
+                              idioma: 'Español',
+                              estudiantes: 378,
+                              certificado: 'No',
+                              evaluaciones: 'Sí',
                             ),
                           ),
                         );
