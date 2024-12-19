@@ -166,7 +166,7 @@ class DetalleCursoPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(titulo),
-        backgroundColor: Colors.pink, // Color rosado en la barra superior
+        backgroundColor: Colors.pink[200], // Color rosado en la barra superior
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -194,7 +194,7 @@ class DetalleCursoPage extends StatelessWidget {
                     // Agrega la funcionalidad del botón aquí
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor:  Colors.pink,
+                    backgroundColor:  Colors.pink[200],
                   ),
                   child: Text(
                     "EMPEZAR AHORA",
@@ -207,7 +207,7 @@ class DetalleCursoPage extends StatelessWidget {
 
           // Menú de navegación
           Container(
-            color: Colors.pink, // Fondo rosado para el menú
+            color: Colors.pink[200], // Fondo rosado para el menú
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
