@@ -12,7 +12,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     {
       "titulo": "Decoración Avanzada En Uñas",
       "imagenPath": "assets/images/decoracion_avanzada.jpg",
-      "precio": "\$99",
+      "precio": "\$99.000",
       "conferencias": 47,
       "cuestionarios": 0,
       "duracion": "180 dias",
@@ -25,7 +25,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     {
       "titulo": "Manicure y Pedicure Virtual",
       "imagenPath": "assets/images/manicure_pedicure.jpg",
-      "precio": "\$99",
+      "precio": "\$99.000",
       "conferencias": 40,
       "cuestionarios": 11,
       "duracion": "180 dias",
@@ -38,7 +38,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     {
       "titulo": "Semipermanente y Uñas Acrilicas",
       "imagenPath": "assets/images/unias_acrilicas.jpg",
-      "precio": "\$99",
+      "precio": "\$99.000",
       "conferencias": 29,
       "cuestionarios": 9,
       "duracion": "180 dias",
@@ -50,7 +50,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     },
     {
       "titulo": "Decocación (Bob esponja)",
-      "imagenPath": "assets/images/unias_acrilicas.jpg",
+      "imagenPath": "assets/images/decoracion_bobesponja.jpg",
       "precio": "\$99.900",
       "conferencias": 8,
       "cuestionarios": 0,
