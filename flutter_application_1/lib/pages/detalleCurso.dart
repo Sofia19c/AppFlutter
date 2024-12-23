@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'empezarAhora.dart'; // Asegúrate de importar esta página correctamente
 
 class DetalleCursoPage extends StatelessWidget {
   final String titulo;
@@ -62,7 +63,15 @@ class DetalleCursoPage extends StatelessWidget {
                     ),
                     SizedBox(height: 16),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Navegar a la página empezarAhora.dart
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => EmpezarAhoraPage(), // Navega a empezarAhora
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.pink[200],
                       ),
