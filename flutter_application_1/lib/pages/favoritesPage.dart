@@ -49,7 +49,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "evaluaciones": "Si",
     },
     {
-      "titulo": "Decocación (Bob esponja)",
+      "titulo": "Decocación (Bob Esponja)",
       "imagenPath": "assets/images/decoracion_bobesponja.jpg",
       "precio": "\$99.900",
       "conferencias": 8,
@@ -59,6 +59,19 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "idioma": "Español",
       "estudiantes": 1727,
       "certificado": "Incluido",
+      "evaluaciones": "Si",
+    },
+    {
+      "titulo": "Caritas de Bob Esponja",
+      "imagenPath": "assets/images/caritas_bobesponja.jpg",
+      "precio": "Gratis",
+      "conferencias": 9,
+      "cuestionarios": 0,
+      "duracion": "10 horas",
+      "nivel": "Todos los niveles",
+      "idioma": "Español",
+      "estudiantes": 378,
+      "certificado": "No",
       "evaluaciones": "Si",
     },
   ];
