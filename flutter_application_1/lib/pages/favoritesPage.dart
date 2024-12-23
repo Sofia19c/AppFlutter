@@ -1,133 +1,95 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../main.dart'; // Asegúrate de que la importación sea correcta según tu estructura.
-import 'package:flutter_application_1/pages/detalleCurso.dart';
+import 'detalleCurso.dart';
 
-class FavoritesPage extends StatelessWidget {
+class FavoritesPage extends StatefulWidget {
+  @override
+  _FavoritesPageState createState() => _FavoritesPageState();
+}
+
+class _FavoritesPageState extends State<FavoritesPage> {
+  // Lista de favoritos almacenando datos como mapas
+  List<Map<String, dynamic>> favorites = [
+    {
+      "titulo": "Curso de Flutter",
+      "imagenPath": "assets/images/decoracion_avanzada.jpg",
+      "precio": "\$99",
+      "conferencias": 12,
+      "cuestionarios": 4,
+      "duracion": "10 horas",
+      "nivel": "Principiante",
+      "idioma": "Español",
+      "estudiantes": 1200,
+      "certificado": "Incluido",
+      "evaluaciones": "5/5",
+    },
+    {
+      "titulo": "Curso de React",
+      "imagenPath": "assets/images/decoracion_avanzada.jpg",
+      "precio": "\$89",
+      "conferencias": 10,
+      "cuestionarios": 5,
+      "duracion": "8 horas",
+      "nivel": "Intermedio",
+      "idioma": "Inglés",
+      "estudiantes": 800,
+      "certificado": "Incluido",
+      "evaluaciones": "4.8/5",
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final favorites = Provider.of<MyAppState>(context).favorites;
-
-    if (favorites.isEmpty) {
-      return Center(
-        child: Text(
-          'Aún no hay contenido en la página de favoritos.',
-          style: TextStyle(fontSize: 16, color: Colors.grey),
-        ),
-      );
-    }
-
-    return ListView.builder(
-      itemCount: favorites.length,
-      itemBuilder: (context, index) {
-        final imagePath = favorites[index];
-        return Card(
-          key: ValueKey(imagePath), // Clave única basada en el contenido
-          margin: const EdgeInsets.symmetric(vertical: 10.0),
-          elevation: 4.0,
-          child: InkWell(
-            // Hace la tarjeta interactiva
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetalleCursoPage(
-                    titulo: 'Curso Decoración Bob Esponja',
-                    imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
-                    precio: 'Gratis',
-                    conferencias: 9,
-                    cuestionarios: 0,
-                    duracion: '10 Horas',
-                    nivel: 'Todos los niveles',
-                    idioma: 'Español',
-                    estudiantes: 378,
-                    certificado: 'No',
-                    evaluaciones: 'Sí',
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Favoritos"),
+        backgroundColor: Colors.pink[200],
+      ),
+      body: ListView.builder(
+        itemCount: favorites.length,
+        itemBuilder: (context, index) {
+          final course = favorites[index]; // Cada elemento es un mapa
+          return Card(
+            key: ValueKey(course["imagenPath"]), // Clave única para cada curso
+            margin: const EdgeInsets.symmetric(vertical: 10.0),
+            elevation: 4.0,
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetalleCursoPage(
+                      titulo: course["titulo"],
+                      imagenPath: course["imagenPath"],
+                      precio: course["precio"],
+                      conferencias: course["conferencias"],
+                      cuestionarios: course["cuestionarios"],
+                      duracion: course["duracion"],
+                      nivel: course["nivel"],
+                      idioma: course["idioma"],
+                      estudiantes: course["estudiantes"],
+                      certificado: course["certificado"],
+                      evaluaciones: course["evaluaciones"],
+                    ),
                   ),
+                );
+              },
+              child: ListTile(
+                leading: Image.asset(
+                  course["imagenPath"],
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.cover,
                 ),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetalleCursoPage(
-                            titulo: 'Curso Decoración Bob Esponja',
-                            imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
-                            precio: 'Gratis',
-                            conferencias: 9,
-                            cuestionarios: 0,
-                            duracion: '10 Horas',
-                            nivel: 'Todos los niveles',
-                            idioma: 'Español',
-                            estudiantes: 378,
-                            certificado: 'No',
-                            evaluaciones: 'Sí',
-                          ),
-                        ),
-                      );
-                    },
-                    child: Image.asset(
-                      imagePath,
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetalleCursoPage(
-                              titulo: 'Curso Decoración Bob Esponja',
-                              imagenPath: imagePath, // Usa el path de la imagen guardado en favoritos
-                              precio: 'Gratis',
-                              conferencias: 9,
-                              cuestionarios: 0,
-                              duracion: '10 Horas',
-                              nivel: 'Todos los niveles',
-                              idioma: 'Español',
-                              estudiantes: 378,
-                              certificado: 'No',
-                              evaluaciones: 'Sí',
-                            ),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'Curso añadido  ${index + 1}',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.pink,
-                        ),
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.delete, color: Colors.pink),
-                    onPressed: () {
-                      Provider.of<MyAppState>(context, listen: false)
-                          .favorites
-                          .removeAt(index);
-                      Provider.of<MyAppState>(context, listen: false)
-                          .notifyListeners();
-                    },
-                  ),
-                ],
+                title: Text(
+                  course["titulo"],
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Text(course["precio"]),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
