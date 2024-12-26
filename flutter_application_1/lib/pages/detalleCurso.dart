@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'empezarAhora.dart'; // Asegúrate de importar esta página correctamente
+import 'curriculum.dart';
+import 'visionGeneral.dart';
+import 'instructor.dart';
 
 class DetalleCursoPage extends StatelessWidget {
   final String titulo;
@@ -13,6 +15,8 @@ class DetalleCursoPage extends StatelessWidget {
   final int estudiantes;
   final String certificado;
   final String evaluaciones;
+  final String visionGeneral; // Información específica del curso
+  final List<String> curriculum; // Información específica del curso
 
   const DetalleCursoPage({
     Key? key,
@@ -27,7 +31,14 @@ class DetalleCursoPage extends StatelessWidget {
     required this.estudiantes,
     required this.certificado,
     required this.evaluaciones,
+    required this.visionGeneral,
+    required this.curriculum,
   }) : super(key: key);
+
+  // Información general del instructor (igual para todos los cursos)
+  static const String instructorInfo = '''
+    Este curso está impartido por el profesor/a Jane Doe, un/a profesional con más de 10 años de experiencia en la enseñanza de esta materia. Jane ha capacitado a más de 10,000 estudiantes alrededor del mundo, combinando teoría y práctica para un aprendizaje efectivo.
+  ''';
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +48,6 @@ class DetalleCursoPage extends StatelessWidget {
         backgroundColor: Colors.pink[200],
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween, // Espaciado entre contenido y barra
         children: [
           Expanded(
             child: SingleChildScrollView(
@@ -64,13 +74,7 @@ class DetalleCursoPage extends StatelessWidget {
                     SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () {
-                        // Navegar a la página empezarAhora.dart
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => EmpezarAhoraPage(), // Navega a empezarAhora
-                          ),
-                        );
+                        Navigator.pushNamed(context, '/empezarAhora');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.pink[200],
@@ -107,16 +111,30 @@ class DetalleCursoPage extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    // Navegar a Visión General
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VisionGeneralPage(
+                          visionGeneral: visionGeneral,
+                        ),
+                      ),
+                    );
                   },
                   child: Text(
-                    'Visión general',
+                    'Visión General',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
                 TextButton(
                   onPressed: () {
-                    // Navegar a Curriculum
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CurriculumPage(
+                          curriculum: curriculum,
+                        ),
+                      ),
+                    );
                   },
                   child: Text(
                     'Curriculum',
@@ -125,7 +143,14 @@ class DetalleCursoPage extends StatelessWidget {
                 ),
                 TextButton(
                   onPressed: () {
-                    // Navegar a Instructor
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => InstructorPage(
+                          instructor: instructorInfo,
+                        ),
+                      ),
+                    );
                   },
                   child: Text(
                     'Instructor',

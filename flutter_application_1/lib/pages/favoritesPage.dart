@@ -21,6 +21,13 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "estudiantes": 1425,
       "certificado": "No",
       "evaluaciones": "Si",
+      "visionGeneral": "Curso para aprender a construir interfaces con React.",
+      "curriculum": [
+      "Introducción a React",
+      "Componentes y Props",
+      "State y ciclo de vida",
+      "React Router",
+      ],
     },
     {
       "titulo": "Manicure y Pedicure Virtual",
@@ -128,6 +135,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                             estudiantes: course["estudiantes"],
                             certificado: course["certificado"],
                             evaluaciones: course["evaluaciones"],
+                            visionGeneral: course["visionGeneral"], 
+                            curriculum: course["curriculum"],
                           ),
                         ),
                       );
