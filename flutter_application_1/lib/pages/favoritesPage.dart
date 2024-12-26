@@ -15,19 +15,14 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "precio": "\$99.000",
       "conferencias": 47,
       "cuestionarios": 0,
-      "duracion": "180 dias",
+      "duracion": "180 días",
       "nivel": "Experto",
       "idioma": "Español",
       "estudiantes": 1425,
       "certificado": "No",
-      "evaluaciones": "Si",
-      "visionGeneral": "Curso para aprender a construir interfaces con React.",
-      "curriculum": [
-      "Introducción a React",
-      "Componentes y Props",
-      "State y ciclo de vida",
-      "React Router",
-      ],
+      "evaluaciones": "Sí",
+      "curriculum": ["Introducción", "Decoración avanzada", "Proyectos prácticos"],
+      "cursoKey": "decoracion_avanzada",
     },
     {
       "titulo": "Manicure y Pedicure Virtual",
@@ -35,38 +30,44 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "precio": "\$99.000",
       "conferencias": 40,
       "cuestionarios": 11,
-      "duracion": "180 dias",
+      "duracion": "180 días",
       "nivel": "Principiante",
       "idioma": "Español",
       "estudiantes": 1621,
       "certificado": "Incluido",
-      "evaluaciones": "Si",
+      "evaluaciones": "Sí",
+      "curriculum": ["Introducción", "Manicure", "Pedicure", "Práctica"],
+      "cursoKey": "manicure_pedicure",
     },
     {
-      "titulo": "Semipermanente y Uñas Acrilicas",
+      "titulo": "Semipermanente y Uñas Acrílicas",
       "imagenPath": "assets/images/unias_acrilicas.jpg",
       "precio": "\$99.000",
       "conferencias": 29,
       "cuestionarios": 9,
-      "duracion": "180 dias",
+      "duracion": "180 días",
       "nivel": "Todos los niveles",
       "idioma": "Español",
       "estudiantes": 2460,
       "certificado": "Incluido",
-      "evaluaciones": "Si",
+      "evaluaciones": "Sí",
+      "curriculum": ["Introducción", "Semipermanente", "Uñas acrílicas", "Proyectos"],
+      "cursoKey": "unias_acrilicas",
     },
     {
-      "titulo": "Decocación (Bob Esponja)",
+      "titulo": "Decoración (Bob Esponja)",
       "imagenPath": "assets/images/decoracion_bobesponja.jpg",
       "precio": "\$99.900",
       "conferencias": 8,
       "cuestionarios": 0,
-      "duracion": "180 dias",
+      "duracion": "180 días",
       "nivel": "Todos los niveles",
       "idioma": "Español",
       "estudiantes": 1727,
       "certificado": "Incluido",
-      "evaluaciones": "Si",
+      "evaluaciones": "Sí",
+      "curriculum": ["Introducción", "Decoración temática", "Proyectos creativos"],
+      "cursoKey": "decoracion_bobesponja",
     },
     {
       "titulo": "Caritas de Bob Esponja",
@@ -79,7 +80,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "idioma": "Español",
       "estudiantes": 378,
       "certificado": "No",
-      "evaluaciones": "Si",
+      "evaluaciones": "Sí",
+      "curriculum": ["Introducción", "Diseño de caritas", "Proyectos creativos"],
+      "cursoKey": "caritas_bobesponja",
     },
   ];
 
@@ -98,7 +101,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
               itemBuilder: (context, index) {
                 final course = favorites[index]; // Cada elemento es un mapa
                 return Card(
-                  key: ValueKey(course["imagenPath"]), // Clave única para cada curso
+                  key: ValueKey(course["cursoKey"]), // Clave única para cada curso
                   margin: const EdgeInsets.symmetric(vertical: 10.0),
                   elevation: 4.0,
                   child: ListTile(
@@ -124,6 +127,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => DetalleCursoPage(
+                            cursoKey: course["cursoKey"],
                             titulo: course["titulo"],
                             imagenPath: course["imagenPath"],
                             precio: course["precio"],
@@ -135,7 +139,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
                             estudiantes: course["estudiantes"],
                             certificado: course["certificado"],
                             evaluaciones: course["evaluaciones"],
-                            visionGeneral: course["visionGeneral"], 
                             curriculum: course["curriculum"],
                           ),
                         ),
@@ -147,7 +150,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
             ),
     );
   }
- 
+
   // Método para eliminar un curso de la lista de favoritos
   void _deleteFavorite(int index) {
     showDialog(
@@ -178,3 +181,4 @@ class _FavoritesPageState extends State<FavoritesPage> {
     );
   }
 }
+

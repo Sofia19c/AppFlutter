@@ -15,7 +15,7 @@ class DetalleCursoPage extends StatelessWidget {
   final int estudiantes;
   final String certificado;
   final String evaluaciones;
-  final String visionGeneral; // Información específica del curso
+  final String cursoKey; // Clave para identificar el curso
   final List<String> curriculum; // Información específica del curso
 
   const DetalleCursoPage({
@@ -31,7 +31,7 @@ class DetalleCursoPage extends StatelessWidget {
     required this.estudiantes,
     required this.certificado,
     required this.evaluaciones,
-    required this.visionGeneral,
+    required this.cursoKey,
     required this.curriculum,
   }) : super(key: key);
 
@@ -115,7 +115,7 @@ class DetalleCursoPage extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => VisionGeneralPage(
-                          visionGeneral: visionGeneral,
+                          cursoKey: cursoKey, // Ahora se pasa la clave del curso
                         ),
                       ),
                     );
