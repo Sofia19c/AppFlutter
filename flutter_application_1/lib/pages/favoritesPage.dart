@@ -10,6 +10,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
   // Lista de favoritos almacenando datos como mapas
   List<Map<String, dynamic>> favorites = [
     {
+      "cursoKey": "decoracion_avanzada",
       "titulo": "Decoración Avanzada En Uñas",
       "imagenPath": "assets/images/decoracion_avanzada.jpg",
       "precio": "\$99.000",
@@ -22,9 +23,10 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "certificado": "No",
       "evaluaciones": "Sí",
       "curriculum": ["Introducción", "Decoración avanzada", "Proyectos prácticos"],
-      "cursoKey": "decoracion_avanzada",
+      
     },
     {
+      "cursoKey":"manicure_pedicure",
       "titulo": "Manicure y Pedicure Virtual",
       "imagenPath": "assets/images/manicure_pedicure.jpg",
       "precio": "\$99.000",
@@ -37,9 +39,9 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "certificado": "Incluido",
       "evaluaciones": "Sí",
       "curriculum": ["Introducción", "Manicure", "Pedicure", "Práctica"],
-      "cursoKey": "manicure_pedicure",
     },
     {
+      "cursoKey": "unias_acrilicas",
       "titulo": "Semipermanente y Uñas Acrílicas",
       "imagenPath": "assets/images/unias_acrilicas.jpg",
       "precio": "\$99.000",
@@ -52,7 +54,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
       "certificado": "Incluido",
       "evaluaciones": "Sí",
       "curriculum": ["Introducción", "Semipermanente", "Uñas acrílicas", "Proyectos"],
-      "cursoKey": "unias_acrilicas",
     },
     {
       "titulo": "Decoración (Bob Esponja)",
